@@ -25,22 +25,13 @@ namespace PJATK.ViewModels
             }
         }
         
-        public Command ScheduleCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                });
-            }
-        }
-
         public Command PaymentsCommand
         {
             get
             {
                 return new Command(async () =>
                 {
+                    await CoreMethods.PushPageModel<PaymentsViewModel>();
                 });
             }
         }

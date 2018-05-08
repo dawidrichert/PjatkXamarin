@@ -15,6 +15,13 @@
             <Color x:Key="BrushBackground">#D8D8D8</Color>
             <Color x:Key="BrushTheme1">#323232</Color>
             <Color x:Key="BrushTitle">#3E3E3E</Color>
+            <Color x:Key="BrushLink">#4964AC</Color>
+            <Color x:Key="BrushLecture">#AC494D</Color>
+            <Color x:Key="BrushExercises">#4DAC49</Color>
+            <Color x:Key="BrushPass">#4976AC</Color>
+            <Color x:Key="BrushExam">#A349AC</Color>
+            <Color x:Key="BrushYellow">#AC9A49</Color>
+            <Color x:Key="BrushSea">#49ACA8</Color>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />

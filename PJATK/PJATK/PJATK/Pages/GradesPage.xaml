@@ -4,7 +4,7 @@
              x:Class="PJATK.Pages.GradesPage" ItemsSource="{Binding GradesDataModels}">
     <TabbedPage.ItemTemplate>
         <DataTemplate>
-            <ContentPage Title="{Binding Name}">
+            <ContentPage Title="{Binding Name, StringFormat='{0:dddd - dd.MM}'}">
                 <ListView ItemsSource="{Binding Grades}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -12,7 +12,7 @@
                                 <Grid>
                                     <Label Text="{Binding Ocena}" FontAttributes="Bold" />
                                     <Label Grid.Column="1" Text="{Binding NazwaKodPrzedmiotu}" />
-                                    <Label Grid.Column="2" Text="{Binding Data}" HorizontalTextAlignment="End" />
+                                    <Label Grid.Column="2" Text="{Binding Data, StringFormat='{0:dd.MM.yyyy}'}" HorizontalTextAlignment="End" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -20,6 +20,5 @@
                 </ListView>
             </ContentPage>
         </DataTemplate>
-
     </TabbedPage.ItemTemplate>
 </TabbedPage>
