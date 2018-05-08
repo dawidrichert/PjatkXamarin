@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Plugin.SecureStorage;
 
 namespace PJATK.UWP
 {
@@ -28,6 +29,8 @@ namespace PJATK.UWP
         /// </summary>
         public App()
         {
+            WinSecureStorageBase.StoragePassword = "AYnnDVypx2MbpYTLXG5795kWNFwLhK4c";
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

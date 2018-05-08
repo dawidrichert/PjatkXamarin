@@ -12,6 +12,10 @@
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
+            <Color x:Key="BrushBackground">#D8D8D8</Color>
+            <Color x:Key="BrushTheme1">#323232</Color>
+            <Color x:Key="BrushTitle">#3E3E3E</Color>
+
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="White" />

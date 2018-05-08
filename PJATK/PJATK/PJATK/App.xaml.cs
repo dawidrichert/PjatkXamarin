@@ -1,19 +1,17 @@
-﻿using System;
-
-using PJATK.Views;
+﻿using FreshMvvm;
+using PJATK.ViewModels;
 using Xamarin.Forms;
 
 namespace PJATK
 {
 	public partial class App : Application
 	{
-
 		public App ()
 		{
 			InitializeComponent();
 
-
-            MainPage = new MainPage();
+            var splashPage = FreshPageModelResolver.ResolvePageModel<SplashViewModel>();
+            MainPage = new FreshNavigationContainer(splashPage);
         }
 
 		protected override void OnStart ()
