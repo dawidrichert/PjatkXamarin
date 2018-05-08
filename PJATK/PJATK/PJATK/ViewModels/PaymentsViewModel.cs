@@ -5,10 +5,15 @@ namespace PJATK.ViewModels
     public class PaymentsViewModel : BaseViewModel
     {
         public PaymentsDataModel PaymentsDataModel { get; set; }
-
-        public PaymentsViewModel()
+        
+        public override void Init(object initData)
         {
-            PaymentsDataModel = AppData.PaymentsDataModel;
+            base.Init(initData);
+
+            if (initData is PaymentsDataModel paymentsDataModel)
+            {
+                PaymentsDataModel = paymentsDataModel;
+            }
         }
     }
 }

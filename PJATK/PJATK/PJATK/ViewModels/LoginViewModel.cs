@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using PJATK.DataModels;
+﻿using System.Threading.Tasks;
 using PJATK.Services;
 using PJATK.Utils;
 using Xamarin.Forms;
@@ -12,13 +9,7 @@ namespace PJATK.ViewModels
     {
         public string Login { get; set; }
         public string Password { get; set; }
-
-        public override void Init(object initData)
-        {
-            base.Init(initData);
-          //  CoreMethods.RemoveFromNavigation();
-        }
-
+        
         public Command LoginCommand
         {
             get

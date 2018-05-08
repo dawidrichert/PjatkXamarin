@@ -3,11 +3,11 @@ using PJATK.Models;
 
 namespace PJATK.DataModels
 {
-    public static class AppData
+    public class AppData
     {
-        public static StudentPersonalData StudentPersonalData { get; set; }
-        public static IList<ScheduleDataModel> StudentScheduleDataModels { get; set; }
-        public static PaymentsDataModel PaymentsDataModel { get; set; }
-        public static IList<GradesDataModel> GradesDataModels { get; set; }
+        public StudentPersonalData StudentPersonalData { get; set; }
+        public IList<ScheduleDataModel> StudentScheduleDataModels { get; set; }
+        public PaymentsDataModel PaymentsDataModel { get; set; }
+        public IList<GradesDataModel> GradesDataModels { get; set; }
     }
 }

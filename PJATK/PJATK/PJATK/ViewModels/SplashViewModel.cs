@@ -22,16 +22,17 @@ namespace PJATK.ViewModels
             }
             else
             {
+                var appData = new AppData();
                 if (_initData is StudentPersonalData studentPersonalData)
                 {
-                    AppData.StudentPersonalData = studentPersonalData;
+                    appData.StudentPersonalData = studentPersonalData;
                 }
                 else
                 {
-                    AppData.StudentPersonalData = await WebService.Instance.GetStudentPersonalData();
+                    appData.StudentPersonalData = await WebService.Instance.GetStudentPersonalData();
                 }
 
-                AppData.GradesDataModels = AppData.StudentPersonalData.Oceny
+                appData.GradesDataModels = appData.StudentPersonalData.Oceny
                     .GroupBy(x => x.Semestr)
                     .OrderByDescending(x => x.Key)
                     .Select(group => new GradesDataModel
@@ -40,21 +41,21 @@ namespace PJATK.ViewModels
                         Grades = group.ToList()
                     }).ToList();
 
-                AppData.PaymentsDataModel = new PaymentsDataModel
+                appData.PaymentsDataModel = new PaymentsDataModel
                 {
-                    Konto_wplat = AppData.StudentPersonalData.Konto_wplat,
-                    Konto_wyplat = AppData.StudentPersonalData.Konto_wyplat,
-                    Kwota_naleznosci = AppData.StudentPersonalData.Kwota_naleznosci,
-                    Kwota_wplat = AppData.StudentPersonalData.Kwota_wplat,
-                    Kwota_wyplat = AppData.StudentPersonalData.Kwota_wyplat,
-                    Saldo = AppData.StudentPersonalData.Saldo,
-                    Oplaty = AppData.StudentPersonalData.Oplaty.OrderByDescending(x => x.TerminPlatnosci).ToList(),
-                    Platnosci = AppData.StudentPersonalData.Platnosci.OrderByDescending(x => x.DataWplaty).ToList()
+                    Konto_wplat = appData.StudentPersonalData.Konto_wplat,
+                    Konto_wyplat = appData.StudentPersonalData.Konto_wyplat,
+                    Kwota_naleznosci = appData.StudentPersonalData.Kwota_naleznosci,
+                    Kwota_wplat = appData.StudentPersonalData.Kwota_wplat,
+                    Kwota_wyplat = appData.StudentPersonalData.Kwota_wyplat,
+                    Saldo = appData.StudentPersonalData.Saldo,
+                    Oplaty = appData.StudentPersonalData.Oplaty.OrderByDescending(x => x.TerminPlatnosci).ToList(),
+                    Platnosci = appData.StudentPersonalData.Platnosci.OrderByDescending(x => x.DataWplaty).ToList()
                 };
 
                 var today = DateTime.Today;
                 var studentSchedules = await WebService.Instance.GetStudentSchedules(today, today.AddMonths(1));
-                AppData.StudentScheduleDataModels = studentSchedules
+                appData.StudentScheduleDataModels = studentSchedules
                     .GroupBy(x => x.Data_roz.Date)
                     .OrderBy(x => x.Key)
                     .Select(group => new ScheduleDataModel
@@ -63,7 +64,7 @@ namespace PJATK.ViewModels
                         StudentSchedules = group.ToList()
                     }).ToList();
 
-                await CoreMethods.PushPageModel<DashboardViewModel>();
+                await CoreMethods.PushPageModel<DashboardViewModel>(appData);
                 CoreMethods.RemoveFromNavigation();
             }
         }

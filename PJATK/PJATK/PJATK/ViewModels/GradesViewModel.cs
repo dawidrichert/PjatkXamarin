@@ -6,10 +6,15 @@ namespace PJATK.ViewModels
     public class GradesViewModel : BaseViewModel
     {
         public IList<GradesDataModel> GradesDataModels { get; set; }
-
-        public GradesViewModel()
+        
+        public override void Init(object initData)
         {
-            GradesDataModels = AppData.GradesDataModels;
+            base.Init(initData);
+            
+            if (initData is IList<GradesDataModel> gradesDataModels)
+            {
+                GradesDataModels = gradesDataModels;
+            }
         }
     }
 }

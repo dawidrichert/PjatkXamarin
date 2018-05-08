@@ -7,11 +7,18 @@ namespace PJATK.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
+        private AppData _appData;
         public string UserName { get; set; }
-
-        public DashboardViewModel()
+        
+        public override void Init(object initData)
         {
-            UserName = AppData.StudentPersonalData.Imie;
+            base.Init(initData);
+
+            if (initData is AppData appData)
+            {
+                _appData = appData;
+                UserName = appData.StudentPersonalData.Imie;
+            }
         }
 
         public Command QuickLinkCommand
@@ -31,7 +38,7 @@ namespace PJATK.ViewModels
             {
                 return new Command(async () =>
                 {
-                    await CoreMethods.PushPageModel<PaymentsViewModel>();
+                    await CoreMethods.PushPageModel<PaymentsViewModel>(_appData.PaymentsDataModel);
                 });
             }
         }
@@ -42,7 +49,7 @@ namespace PJATK.ViewModels
             {
                 return new Command(async () =>
                 {
-                    await CoreMethods.PushPageModel<GradesViewModel>();
+                    await CoreMethods.PushPageModel<GradesViewModel>(_appData.GradesDataModels);
                 });
             }
         }
